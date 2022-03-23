@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="CRUD_BASIC_ASP.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="CRUD_BASIC_ASP.WebForm1" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -87,6 +87,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Photo</td>
+                    <td >:</td>
+                    <td class="auto-style1">
+                        <asp:FileUpload ID="FileUpload1" runat="server" />
+                        <br />
+                        <br />
+                        <asp:Image ID="Image1" runat="server" Height="100px" Width="100px" />
+                    </td>
+                </tr>
+                <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td class="auto-style1">&nbsp;</td>
@@ -102,14 +112,74 @@
                     <td colspan="3">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td colspan="3">&nbsp;</td>
+                    <td colspan="3">
+                        <asp:Literal ID="Literal8" runat="server"></asp:Literal>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        
+                        
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td colspan="3">&nbsp;</td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <asp:GridView ID="GridView1" runat="server">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:TemplateField HeaderText="ID">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("Id") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Name">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal2" runat="server" Text='<%# Eval("Name") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Number">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal3" runat="server" Text='<%# Eval("Number") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Gender">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal4" runat="server" Text='<%# Eval("Gender") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Hobbies">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal5" runat="server" Text='<%# Eval("Hobbies") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Cast">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal6" runat="server" Text='<%# Eval("Cast") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Course">
+                                    <ItemTemplate>
+                                        <asp:Literal ID="Literal7" runat="server" Text='<%# Eval("Course") %>'></asp:Literal>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Photo">
+                                    <ItemTemplate>
+                                        <asp:Image ID="Image3" runat="server" Height="100px" ImageUrl='<%# Eval("img","~/uploads/{0}") %>' Width="100px" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Edit">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImageButton3" runat="server" CommandArgument='<%# Eval("Id") %>' Height="40px" ImageUrl="~/img/Edit.png" Width="40px" OnClick="ImageButton3_Click" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Delete">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="ImageButton2" runat="server" CommandArgument='<%# Eval("Id") %>' Height="50px" ImageUrl="~/img/delete.png" Width="40px" OnClick="ImageButton2_Click" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
                         </asp:GridView>
                     </td>
                 </tr>
